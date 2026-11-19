@@ -5,25 +5,16 @@ import streamlit as st
 from groq import Groq
 from dotenv import load_dotenv
 
-# Load local .env file, if available.
-# Render will read GROQ_API_KEY from its Environment settings.
 load_dotenv()
 
-GROQ_API_KEY = os.getenv("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")
+GROQ_API_KEY = os.getenv("sk_8O3fLhwTTBio65j3YSACWGdyb3FYHmxoVIigKo3K3uAJndQbIDdu")
 
-# --------------------------------------------------
-# PAGE CONFIGURATION
-# --------------------------------------------------
 
 st.set_page_config(
     page_title="Chat with Raghava AI",
     page_icon="🤖",
     layout="centered"
 )
-
-# --------------------------------------------------
-# CUSTOM DESIGN
-# --------------------------------------------------
 
 st.markdown("""
 <style>
@@ -123,10 +114,6 @@ GROQ_MODELS = [
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# --------------------------------------------------
-# SIDEBAR SETTINGS
-# --------------------------------------------------
-
 with st.sidebar:
     st.title("⚙️ Settings")
 
@@ -179,10 +166,6 @@ with st.sidebar:
     st.markdown("- Streaming displays responses as they arrive")
     st.markdown("- Temperature controls creativity")
 
-# --------------------------------------------------
-# OLLAMA CONNECTION CHECK
-# --------------------------------------------------
-
 def check_ollama_running():
     try:
         response = requests.get(
@@ -194,17 +177,10 @@ def check_ollama_running():
     except requests.exceptions.RequestException:
         return False
 
-# --------------------------------------------------
-# DISPLAY CHAT HISTORY
-# --------------------------------------------------
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-
-# --------------------------------------------------
-# CHAT INPUT
-# --------------------------------------------------
 
 user_prompt = st.chat_input(
     "Ask anything... Try Telugu also: Generative AI ante enti?"
@@ -236,9 +212,6 @@ if user_prompt:
 
         try:
 
-            # ------------------------------------------
-            # LOCAL OLLAMA PROVIDER
-            # ------------------------------------------
 
             if provider == "Ollama (Local)":
 
@@ -289,9 +262,6 @@ if user_prompt:
                         if chunk.get("done", False):
                             break
 
-            # ------------------------------------------
-            # CLOUD GROQ PROVIDER
-            # ------------------------------------------
 
             elif provider == "Groq (Cloud)":
 

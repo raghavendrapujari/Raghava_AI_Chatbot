@@ -7,8 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GROQ_API_KEY = os.getenv("sk_8O3fLhwTTBio65j3YSACWGdyb3FYHmxoVIigKo3K3uAJndQbIDdu")
-
+GROQ_API_KEY = "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"
 
 st.set_page_config(
     page_title="Chat with Raghava AI",

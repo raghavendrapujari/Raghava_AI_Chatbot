@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GROQ_API_KEY = "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"
+GROQ_API_KEY = ("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")
 
 st.set_page_config(
     page_title="Chat with Raghava AI",
@@ -118,21 +118,14 @@ with st.sidebar:
 
     provider = st.selectbox(
         "Choose AI Provider",
-        ["Ollama (Local)", "Groq (Cloud)"]
+        [ "Groq (Cloud)"]
     )
 
-    if provider == "Ollama (Local)":
-        model = st.selectbox(
-            "Choose Ollama Model",
-            OLLAMA_MODELS,
-            index=0
-        )
-    else:
-        model = st.selectbox(
-            "Choose Groq Model",
-            GROQ_MODELS,
-            index=0
-        )
+    model = st.selectbox(
+    "Choose Groq Model",
+     GROQ_MODELS,
+     index=0
+     )
 
     temperature = st.slider(
         "Temperature / Creativity",

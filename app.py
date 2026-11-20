@@ -396,7 +396,7 @@ with st.sidebar:
 
     extra_prompt = st.text_area(
         "Additional system instructions",
-        placeholder="Add your instructions here..."
+        placeholder="Be friendly, understand my messages correctly, and respond in simple, clear English. Help me with coding, learning, and everyday tasks. Keep your answers accurate, useful, and easy to understand."
     )
 
     st.divider()
